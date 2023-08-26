@@ -1,0 +1,1 @@
+# go-clean-template-v1
