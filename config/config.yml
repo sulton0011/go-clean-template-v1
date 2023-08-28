@@ -1,0 +1,23 @@
+app:
+  name: 'go-clean-template'
+  version: '1.0.0'
+
+postgres:
+  pg_url: "salom"
+  pool_max: 30
+
+http:
+  http_port: ':8080'
+  http_scheme: 'http'
+
+logger:
+  log_level: 'debug'
+
+rabbitmq:
+  rpc_server_exchange: 'rpc_server'
+  rpc_client_exchange: 'rpc_client'
+
+default:
+  page: '1'
+  limit: '10'
+  offset: '0'
