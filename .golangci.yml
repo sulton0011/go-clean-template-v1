@@ -1,0 +1,126 @@
+# Настройки для отдельных линтеров
+linters-settings:
+  gci:
+    # local-prefixes: go-clean-template-v1
+    # Настройки для линтера gci (Go Code Importer).
+    # Опция local-prefixes указывает на модуль, для которого не будет применяться форматирование импортов.
+
+  errorlint:
+    errorf: false
+    # Настройки для линтера errorlint.
+    # Опция errorf включает проверку ошибок с использованием функции errorf.
+
+  errcheck:
+    check-type-assertions: false
+    check-blank: false
+    # Настройки для линтера errcheck.
+    # Опции check-type-assertions и check-blank включают проверки типов ошибок и пустых строк.
+
+  exhaustive:
+    check-generated: false
+    default-signifies-exhaustive: false
+    # Настройки для линтера exhaustive.
+    # Опции check-generated и default-signifies-exhaustive управляют проверкой генерированных файлов и значением по умолчанию.
+
+  issues:
+    exclude-use-defer: true
+
+  funlen:
+    lines: 65
+    statements: 40
+    # Настройки для линтера funlen (длина функций).
+    # Опции lines и statements задают максимальное количество строк и выражений в функции.
+
+  gocognit:
+    min-complexity: 15
+    # Настройки для линтера gocognit (когнитивная сложность кода).
+    # Опция min-complexity задает минимальную когнитивную сложность кода.
+
+  gocyclo:
+    min-complexity: 10
+    # Настройки для линтера gocyclo (цикломатическая сложность).
+    # Опция min-complexity задает минимальную цикломатическую сложность.
+
+  goconst:
+    min-len: 2
+    min-occurrences: 2
+    # Настройки для линтера goconst (поиск магических чисел и строк).
+    # Опции min-len и min-occurrences управляют длиной строки и количеством вхождений.
+
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - experimental
+      - opinionated
+      - performance
+      - style
+    disabled-checks:
+      - dupImport
+      - unnecessaryBlock
+    # Настройки для линтера gocritic (кодовые советы).
+    # Опции enabled-tags и disabled-checks позволяют настроить активные теги и отключить определенные проверки.
+
+  gofumpt:
+    extra-rules: true
+    # Настройки для линтера gofumpt (форматирование кода).
+    # Опция extra-rules включает дополнительные правила форматирования.
+
+  gomnd:
+    settings:
+      mnd:
+        checks:
+          - argument
+          - case
+          - condition
+          - operation
+          - return
+    # Настройки для линтера gomnd (числовые магические значения).
+    # Опции checks задают, какие проверки будут выполняться.
+  
+  lll:
+    line-length: 7
+
+  govet:
+    check-shadowing: true
+    # Настройки для линтера govet (статический анализ кода).
+    # Опция check-shadowing включает проверку перекрытия переменных.
+
+  misspell:
+    locale: US
+    # Настройки для линтера misspell (проверка правописания).
+    # Опция locale задает локаль для проверки правописания.
+
+  nestif:
+    min-complexity: 4
+    # Настройки для линтера nestif (вложенность условных операторов).
+    # Опция min-complexity задает минимальную сложность вложенности.
+
+  nolintlint:
+    require-explanation: true
+    require-specific: true
+    # Настройки для линтера nolintlint (контроль использования комментариев nolint).
+    # Опции require-explanation и require-specific требуют объяснения и спецификации для nolint.
+
+# Активация и отключение линтеров
+linters:
+  disable-all: false
+  # Отключение всех линтеров (false означает, что не отключены)
+  enable:
+    - asciicheck
+    - bodyclose
+    - gofmt
+    # Активация определенных линтеров (asciicheck и bodyclose в данном случае)
+    # Здесь также перечислены другие активные линтеры
+
+# Исключения для определенных директорий и файлов
+issues:
+  exclude-rules:
+    - path: integration-test
+      linters:
+        - paralleltest
+        - godot
+    # Исключение для линтеров paralleltest и godot в директории "integration-test"
+    - path: internal/controller/http
+      linters:
+        - godot
+    # Исключение для
