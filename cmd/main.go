@@ -10,6 +10,7 @@ func main() {
 
 	cfg, err := config.NewConfig()
 	if err != nil {
+		println(err.Error())
 		errs.WrapLog(&err, nil, "main")
 		return
 	}

@@ -40,8 +40,7 @@ type (
 	}
 
 	// gRPC -
-	GRPC struct{
-		
+	GRPC struct {
 	}
 
 	// Default -
@@ -52,21 +51,19 @@ type (
 	}
 )
 
-func NewConfig() (cfg *Config, err errs.Error) {
+func NewConfig() (cfg *Config, err error) {
 	defer errs.Wrap(&err, "NewConfig")
 	cfg = &Config{}
 
-	
 	err = cleanenv.ReadConfig("./config/config.yml", cfg)
 	if err != nil {
-		return nil, errs.Wrap(&err, "cleanenv.ReadConfig")
+		return nil, errs.Wrap(&err, "cleanenv.ReadConfig", 1)
 	}
-	
+
 	err = cleanenv.ReadConfig(".env", cfg)
 	if err != nil {
-		return nil, errs.Wrap(&err, "cleanenv.ReadEnv")
+		return nil, errs.Wrap(&err, "cleanenv.ReadConfig", 2)
 	}
 
 	return cfg, nil
 }
-
